@@ -1,0 +1,14 @@
+<%- include('./includes/header.ejs') %>
+<link rel="stylesheet" href="/css/newTask.css">
+</head>
+<body>
+    <main>
+        <%- include('./includes/navigation.ejs') %>
+        <form action="" method="POST" class="newTaskForm">
+            <input type="text" name="taskTitle" placeholder="Type the task's title">
+            <textarea type="text" name="taskDescription" placeholder="Type the task's description"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </main>
+</body>
+</html>
