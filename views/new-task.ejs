@@ -4,10 +4,13 @@
 <body>
     <main>
         <%- include('./includes/navigation.ejs') %>
-        <form action="/new-task" method="POST" class="newTaskForm">
-            <input type="text" name="taskTitle" placeholder="Type the task's title">
-            <textarea type="text" name="taskDescription" placeholder="Type the task's description"></textarea>
-            <button type="submit">Send</button>
+        <form action="<% if(isEditing) { %>/edit-task<% } else { %>/new-task<% } %>" method="POST" class="newTaskForm">
+            <input type="text" name="taskTitle" placeholder="Type the task's title" value="<% if (isEditing) { %><%= task.taskTitle %><% } %>" >
+            <textarea type="text" name="taskDescription" placeholder="Type the task's description"><% if (isEditing) { %><%= task.taskDescription %><% } %></textarea>
+            <% if (isEditing) { %>
+                <input type="hidden" name="taskId" value="<%= task.id %>" >
+            <% } %>
+            <button type="submit"><% if (isEditing) { %>Edit<% } else { %>Send<% } %></button>
         </form>
     </main>
 </body>

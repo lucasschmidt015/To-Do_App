@@ -1,7 +1,25 @@
 <%- include('./includes/header.ejs') %>
+<link rel="stylesheet" href="/css/tasksList.css">
 </head>
 <body>
     <%- include('./includes/navigation.ejs') %>
-    <h1>Index file</h1>
+    
+    <% if (Tasks.length > 0) { %> 
+        <div class="tasks_list">
+            <% for (let task of Tasks) { %>
+                <div class="list_content">
+                    <p><%= task.taskTitle %></p>
+                    <p><%= task.taskDescription %></p>
+                    <div class="interaction_buttons">
+                        <a class="btn" href="/edit-task/<%= task.id %>">Edit</a>
+                        <a class="btn" href="/delete-task/<%= task.id %>">Delete</a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    <% } else { %>
+        <h1>No data founded</h1>
+    <% } %>
+    
 </body>
 </html>

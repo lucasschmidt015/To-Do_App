@@ -50,4 +50,12 @@ module.exports = class Task {
         getTasksFromFile(cb);
     }
 
+    static deleteTaskById(id, cb) {
+        getTasksFromFile(tasks => {
+            const newTaks = tasks.filter(task => task.id !== id);
+            fs.writeFile(p, JSON.stringify(newTaks), err => {
+                cb();
+            })
+        })
+    }
 }
